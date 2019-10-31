@@ -1,4 +1,6 @@
 package com.burcutopcu.unittesttrain.vm
+
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.burcutopcu.unittesttrain.app.IServiceResponseCallback
 import com.burcutopcu.unittesttrain.model.Pokemon
@@ -14,7 +16,7 @@ constructor(private val pokemonRepo: PokemonRepo) : ViewModel() {
     fun getPokemonList() {
         pokemonRepo.getPokemonList(object : IServiceResponseCallback<List<Pokemon>> {
             override fun onServerError(error: String?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                Log.i("tag", error)
             }
 
             override fun onServerCompleted(t: List<Pokemon>) {
@@ -22,7 +24,7 @@ constructor(private val pokemonRepo: PokemonRepo) : ViewModel() {
             }
 
             override fun onServerCompleted() {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                Log.i("tag", "")
             }
         })
     }

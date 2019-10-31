@@ -1,6 +1,7 @@
 package com.burcutopcu.unittesttrain.di
 
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import com.burcutopcu.unittesttrain.activity.MainActivity
 import com.burcutopcu.unittesttrain.app.AppManager
 import com.burcutopcu.unittesttrain.network.repo.PokemonRepo
@@ -23,13 +24,22 @@ class MainActivityModule {
 
     @Provides
     @Singleton
+    fun provideNumberViewModel(
+        activity: MainActivity,
+        factory: MainActivityViewModelFactory
+    ): MainActivityViewModel {
+        return ViewModelProviders.of(activity, factory).get(MainActivityViewModel::class.java)
+    }
+
+    @Provides
+    @Singleton
     fun getRepository(apiManager: AppManager): PokemonRepo {
         return PokemonRepo(apiManager)
     }
 
     @Provides
     @Singleton
-    fun getViewModelFactory(numbersRepo: PokemonRepo): ViewModelProvider.Factory {
-        return MainActivityViewModelFactory(numbersRepo)
+    fun getViewModelFactory(pokemonRepo: PokemonRepo): ViewModelProvider.Factory {
+        return MainActivityViewModelFactory(pokemonRepo)
     }
 }

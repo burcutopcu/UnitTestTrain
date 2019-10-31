@@ -17,7 +17,7 @@ class PokemonRepo @Inject constructor(appManager: AppManager): IPokemonRepo {
         pokemonService.getPokemons().enqueue(object : Callback<List<Pokemon>> {
             override fun onResponse(call: Call<List<Pokemon>>, response: Response<List<Pokemon>>) {
                 if (response.isSuccessful && response.body() != null) {
-
+                    callback.onServerCompleted(response.body()!!)
                 } else
                     callback.onServerError("")
             }
