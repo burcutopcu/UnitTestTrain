@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.burcutopcu.unittesttrain.activity.MainActivity
 import com.burcutopcu.unittesttrain.app.AppManager
+import com.burcutopcu.unittesttrain.helper.DateHelper
 import com.burcutopcu.unittesttrain.network.repo.PokemonRepo
 import com.burcutopcu.unittesttrain.vm.MainActivityViewModel
 import com.burcutopcu.unittesttrain.vm.MainActivityViewModelFactory
@@ -29,6 +30,12 @@ class MainActivityModule {
         factory: MainActivityViewModelFactory
     ): MainActivityViewModel {
         return ViewModelProviders.of(activity, factory).get(MainActivityViewModel::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideDateHelper(): DateHelper {
+        return DateHelper()
     }
 
     @Provides

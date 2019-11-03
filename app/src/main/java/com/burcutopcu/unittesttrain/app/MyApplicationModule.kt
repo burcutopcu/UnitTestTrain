@@ -2,6 +2,7 @@ package com.burcutopcu.unittesttrain.app
 
 import android.content.Context
 import com.burcutopcu.unittesttrain.di.MainActivityModule
+import com.burcutopcu.unittesttrain.helper.DateHelper
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -29,5 +30,11 @@ class MyApplicationModule {
     @Provides
     fun provideApiManager(): AppManager {
         return AppManager()
+    }
+
+    @Singleton
+    @Provides
+    fun provideDateHelper(): DateHelper {
+        return DateHelper()
     }
 }

@@ -31,6 +31,7 @@ class VerticalViewAdapter(private val pokemonList: List<Pokemon>) :
             itemView.user_id.text = user.id
             itemView.user_name.text = user.name
             itemView.user_type.text = user.type.toString()
+            itemView.created_at.text = user.createdAt
         }
     }
 }
