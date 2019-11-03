@@ -16,7 +16,7 @@ constructor(private val pokemonRepo: PokemonRepo) : ViewModel() {
     fun getPokemonList() {
         pokemonRepo.getPokemonList(object : IServiceResponseCallback<List<Pokemon>> {
             override fun onServerError(error: String?) {
-                Log.i("tag", error)
+                Log.i("tag", error!!)
             }
 
             override fun onServerCompleted(t: List<Pokemon>) {
